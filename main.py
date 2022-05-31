@@ -8,4 +8,4 @@ if __name__ == "__main__":
     transaction_type = "TRANSFER"
     
     transaction = Transaction(sender, receiver, amount, transaction_type)
-    print(transaction.to_json())
+    print(transaction)
