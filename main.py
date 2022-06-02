@@ -1,5 +1,4 @@
-from Transactions import Transaction
-
+from transaction import Transaction
 
 if __name__ == "__main__":
     sender = "sender"
