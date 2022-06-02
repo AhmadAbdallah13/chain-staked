@@ -1,9 +1,9 @@
 import json
-
 from Crypto.Hash import SHA256
 
 
 class Utils:
+
     @staticmethod
     def hash(data):
         data_string = json.dumps(data)
