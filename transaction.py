@@ -16,7 +16,7 @@ class Transaction:
     def to_json(self):
         return self.__dict__
 
-    def sign(self, signature):
+    def assign_signature(self, signature):
         self.signature = signature
 
     def payload(self) -> dict:
@@ -27,6 +27,5 @@ class Transaction:
         :return: dictionary object
         """
         json_rep = copy.deepcopy(self.to_json())
-
         json_rep["signature"] = ""
         return json_rep

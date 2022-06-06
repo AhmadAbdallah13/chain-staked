@@ -7,14 +7,17 @@ if __name__ == "__main__":
     amount = 1
     transaction_type = "TRANSFER"
     
-    transaction = Transaction(sender, receiver, amount, transaction_type)
     wallet = Wallet()
+    fraudulent_wallet = Wallet()
 
-    signature = wallet.sign(transaction.to_json())
-    transaction.sign(signature)
-
+    transaction = wallet.create_transaction(receiver, amount, transaction_type)
     is_signature_valid = Wallet.signature_valid(
-        transaction.payload(), signature, wallet.get_public_key()
+        transaction.payload(), transaction.signature, wallet.get_public_key()
+    )
+    is_signature_valid2 = Wallet.signature_valid(
+        transaction.payload(), transaction.signature, fraudulent_wallet.get_public_key()
     )
 
-    print("My man, is the signature valid?", is_signature_valid)
+    print("valid sig my man? ", is_signature_valid)
+    print("my man, you're giving me the wrong public key? Say False if it's the wrong wallet ",
+          is_signature_valid2)
