@@ -13,4 +13,8 @@ if __name__ == "__main__":
     signature = wallet.sign(transaction.to_json())
     transaction.sign(signature)
 
-    print(transaction.to_json())
+    is_signature_valid = Wallet.signature_valid(
+        transaction.payload(), signature, wallet.get_public_key()
+    )
+
+    print("My man, is the signature valid?", is_signature_valid)

@@ -1,3 +1,4 @@
+import copy
 import uuid
 import time
 
@@ -17,3 +18,15 @@ class Transaction:
 
     def sign(self, signature):
         self.signature = signature
+
+    def payload(self) -> dict:
+        """
+        to check the is_signature_valid correctly we have to calculate the hash of the
+        transaction object with the signature value as empty string, to get the same hash
+        we calculated before.
+        :return: dictionary object
+        """
+        json_rep = copy.deepcopy(self.to_json())
+
+        json_rep["signature"] = ""
+        return json_rep
