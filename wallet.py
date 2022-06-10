@@ -21,7 +21,7 @@ class Wallet:
         return signature
 
     @staticmethod
-    def signature_valid(data, signature, public_key_string):
+    def is_signature_valid(data, signature, public_key_string):
         """
         validates the signature of a transaction.
         :param data: of the transaction payload

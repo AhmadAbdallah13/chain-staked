@@ -1,3 +1,4 @@
+from block import Block
 from transaction import Transaction
 from transactions_pool import TransactionsPool
 from wallet import Wallet
@@ -20,4 +21,6 @@ if __name__ == "__main__":
     if not transactions_pool.transaction_exists(transaction.uuid):
         transactions_pool.add_transaction(transaction)
 
+    block = Block(transactions_pool.transactions, "prev_hash", "forger", 1)
+    print("block is:", block.to_json(), sep='\n')
     print("the pool consists of:", transactions_pool.transactions, sep='\n')
