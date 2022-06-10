@@ -9,7 +9,7 @@ class Transaction:
         self.receiver_public_key = receiver_public_key
         self.amount = amount
         self.transaction_type = transaction_type
-        self.id = uuid.uuid1().hex
+        self.uuid = uuid.uuid1().hex
         self.timestamp = time.time()
         self.signature = ""
 
@@ -29,3 +29,13 @@ class Transaction:
         json_rep = copy.deepcopy(self.to_json())
         json_rep["signature"] = ""
         return json_rep
+
+    def equals(self, transaction_uuid) -> bool:
+        """
+        compare the uuid between two transactions.
+        :param transaction_uuid:
+        :return: bool
+        """
+        if self.uuid == transaction_uuid:
+            return True
+        return False
